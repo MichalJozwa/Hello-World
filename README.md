@@ -6,6 +6,7 @@ This is a simple layout of website
 - Theme Button
 
 # TODO list
+- Typing Effect [Header Text]
 - Carousel Effect
 - Language Option
 - Create Pages
