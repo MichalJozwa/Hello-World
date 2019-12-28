@@ -1,7 +1,9 @@
 # Hello World
 "It's not just a Code!"
-
 This is a simple layout of website
+
+# DONE
+- Theme Button
 
 # TODO list
 - Carousel Effect
