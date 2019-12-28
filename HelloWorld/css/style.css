@@ -6,7 +6,7 @@
 }
 
 html {
-  font: 400 17px 'Source Sans Pro', 'Titillium Web', 'Montserrat';
+  font: 400 17px 'Source Sans Pro', 'Titillium Web', 'Google Sans', 'Roboto';
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
@@ -14,8 +14,9 @@ html {
   --bg-panel: #ededed;
   --color-text: #333;
   --color-headings: #0077FF;
-  --color-headers: #fcfcfc;
-  --hover: rgb(235, 235, 235);
+  --color-title: #fcfcfc;
+  --border-box: rgb(230, 230, 230);
+  --hover: rgb(215, 215, 215);
   --shadow: rgba(0, 0, 0, 0.15);
 }
 
@@ -24,7 +25,8 @@ html[dark='true'] {
   --bg-panel: #434343;
   --color-text: #B5B5B5;
   --color-headings: #3694FF;
-  --color-headers: #fcfcfc;
+  --color-title: #fcfcfc;
+  --border-box: rgb(71, 71, 71);
   --hover: rgb(46, 46, 46);
 }
 
@@ -87,7 +89,7 @@ header {
 header .header-title {
   position: absolute;
   font: 600 40px 'Roboto Mono', monospace;
-  color: var(--color-headers);
+  color: var(--color-title);
   top: 34vh;
   right: 20vw;
   line-height: 0;
@@ -100,7 +102,7 @@ header .header-title span {
 header .header-paragraph {
   position: absolute;
   font: 400 20px 'Titillium Web';
-  color: var(--color-headers);
+  color: var(--color-title);
   top: 37.5vh;
   right: 20vw;
   line-height: 0;
@@ -205,13 +207,13 @@ header nav .nav-list .nav-item a {
   height: 180px;
   background: var(--bg);
   list-style: none;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 10px 10px;
   opacity: 0;
   pointer-events: none;
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px);
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .language .lang-list .lang-item {
@@ -227,10 +229,16 @@ header nav .nav-list .nav-item a {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
+  -webkit-transition: background .2s ease;
+  transition: background .2s ease;
 }
 
 .language .lang-list .lang-item:hover {
-  background-color: var(--hover);
+  background: var(--hover);
+}
+
+.language .lang-list .lang-item:last-child {
+  border-radius: 0 0 10px 10px;
 }
 
 .language .lang-list .lang-item a {
@@ -257,25 +265,113 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 50vh;
+  min-height: 50vh;
   z-index: 500;
 }
 
-.about {
+.article {
   width: 70vw;
-  min-height: 5vh;
+  min-height: 10vh;
   margin: 4vh 0 5vh 0;
   color: var(--color-text);
 }
 
-.about .about-title {
-  margin-bottom: 5px;
+.article .article-title {
+  margin-bottom: 10px;
   color: var(--color-head);
-  font: 400 39px 'Google Sans';
+  font: 400 37px 'Google Sans';
 }
 
-.about .about-paragraph {
+.article .about-paragraph {
   font: 300 21px 'Titillium Web';
+}
+
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  max-width: 30vw;
+  min-height: 45vh;
+  border: 1px solid var(--border-box);
+  border-radius: 15px;
+  background: var(--bg-panel);
+}
+
+.box .box-img-container {
+  background: var(--color-text);
+  width: 100%;
+}
+
+.box .box-img-container .box-img {
+  width: 90%;
+}
+
+.box .box-text-container {
+  margin: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.box .box-text-container .box-title {
+  margin: 15px 0;
+  font: 400 28px 'Google Sans';
+  color: var(--color-headings);
+}
+
+.box .box-text-container .box-paragraph {
+  margin: 0 0 15px;
+  font-size: 20px;
+  color: var(--color-text);
+}
+
+.box .box-text-container .hashtag {
+  text-decoration: none;
+  margin: 5px 0 5vh 0;
+  font: 300 18px 'Titillium Web';
+  color: var(--color-headings);
+  line-height: 20px;
+}
+
+.box .box-text-container .hashtag:focus {
+  text-decoration: underline;
+}
+
+.more-btn {
+  display: inline-block;
+  height: 30px;
+  padding: 8px;
+  text-decoration: none;
+  font: 500 14px 'Google Sans';
+  color: var(--color-headings);
+  padding: 5px;
+  -webkit-transition: background .3s ease, border-radius .3s ease;
+  transition: background .3s ease, border-radius .3s ease;
+}
+
+.more-btn:focus {
+  background: rgba(0, 119, 255, 0.336);
+  border-radius: 3px;
 }
 
 footer {

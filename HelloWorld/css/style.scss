@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 html{
-    font: 400 17px 'Source Sans Pro', 'Titillium Web', 'Montserrat';
+    font: 400 17px 'Source Sans Pro', 'Titillium Web', 'Google Sans', 'Roboto';
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
@@ -13,8 +13,9 @@ html{
     --bg-panel: #ededed;
     --color-text: #333;
     --color-headings: #0077FF;
-    --color-headers: #fcfcfc;
-    --hover: rgb(235, 235, 235);
+    --color-title: #fcfcfc;
+    --border-box: rgb(230, 230, 230);
+    --hover: rgb(215, 215, 215);
     --shadow: rgba(0, 0, 0, 0.15);
 }
 html[dark='true']{
@@ -22,7 +23,8 @@ html[dark='true']{
     --bg-panel: #434343;
     --color-text: #B5B5B5;
     --color-headings: #3694FF;
-    --color-headers: #fcfcfc;
+    --color-title: #fcfcfc;
+    --border-box: rgb(71, 71, 71);
     --hover: rgb(46, 46, 46);
 }
 html.transition,
@@ -67,7 +69,7 @@ header{
     .header-title{
         position: absolute;
         font: 600 40px 'Roboto Mono', monospace;
-        color: var(--color-headers);
+        color: var(--color-title);
         top: 34vh;
         right: 20vw;
         line-height: 0;
@@ -78,7 +80,7 @@ header{
     .header-paragraph{
         position: absolute;
         font: 400 20px 'Titillium Web';
-        color: var(--color-headers);
+        color: var(--color-title);
         top: 37.5vh;
         right: 20vw;
         line-height: 0;
@@ -148,11 +150,11 @@ header{
         height: 180px;
         background: var(--bg);
         list-style: none;
-        border-radius: 0 0 5px 5px;
+        border-radius: 0 0 10px 10px;
         opacity: 0;
         pointer-events: none;
         transform: translateY(-10px);
-        transition: all 0.4s ease;
+        transition: all 0.2s ease;
         .lang-item{
             width: 100%;
             height: 100%;
@@ -160,7 +162,9 @@ header{
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            &:hover{background-color: var(--hover);}
+            transition: background .2s ease;
+            &:hover{background: var(--hover);}
+            &:last-child{border-radius: 0 0 10px 10px;}
             a{
                 color: var(--color-text);
                 text-decoration: none;
@@ -179,23 +183,86 @@ main{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 50vh;
+    min-height: 50vh;
     z-index: 500;
 }
 
 // About
-.about{
+.article{
     width: 70vw;            
-    min-height: 5vh;
+    min-height: 10vh;
     margin: 4vh 0 5vh 0;
     color: var(--color-text);
-    .about-title{
-        margin-bottom: 5px;
+    .article-title{
+        margin-bottom: 10px;
         color: var(--color-head);
-        font: 400 39px 'Google Sans';
+        font: 400 37px 'Google Sans';
     }
     .about-paragraph{
         font: 300 21px 'Titillium Web';
+    }
+}
+
+// Progress
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    max-width: 30vw;
+    min-height: 45vh;
+    border: 1px solid var(--border-box);
+    border-radius: 15px;
+    background: var(--bg-panel);
+    .box-img-container{
+        background: var(--color-text);
+        width: 100%;
+        .box-img{
+            width: 90%;
+        }
+    }
+    .box-text-container{
+        margin: 2%;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: flex-start;
+        .box-title{
+            margin: 15px 0;
+            font: 400 28px 'Google Sans';
+            color: var(--color-headings);
+        }
+        .box-paragraph{
+            margin: 0 0 15px;
+            font-size: 20px;
+            color: var(--color-text);
+        }
+        .hashtag{
+            text-decoration: none;
+            margin: 5px 0 5vh 0;
+            font: 300 18px 'Titillium Web';
+            color: var(--color-headings);
+            line-height: 20px;
+            &:focus{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.more-btn{
+    display: inline-block;
+    height: 30px;
+    padding: 8px;
+    text-decoration: none;
+    font: 500 14px 'Google Sans';
+    color: var(--color-headings);
+    padding: 5px;
+    transition: background .3s ease, border-radius .3s ease;
+    &:focus{
+        background: rgba(0, 119, 255, 0.336);
+        border-radius: 3px;
     }
 }
 
